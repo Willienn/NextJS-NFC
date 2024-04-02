@@ -1,0 +1,30 @@
+{
+  "name": "api",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "example-basic": "node -r @babel/register ./basic.js"
+  },
+  "dependencies": {
+    "@pokusew/pcsclite": "^0.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "express-sse": "^0.5.3",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.0",
+    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
+    "@babel/plugin-transform-class-properties": "^7.22.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.23.0",
+    "@babel/register": "^7.22.15",
+    "ava": "^5.3.1",
+    "chalk": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "mock-require": "^3.0.3",
+    "triple-beam": "^1.4.1",
+    "winston": "^3.11.0"
+  }
+}
