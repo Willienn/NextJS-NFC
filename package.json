@@ -1,13 +1,12 @@
 {
-    "name": "nfc-card-reader",
-    "version": "0.1.0",
-    "workspaces": ["./web", "./api"],
-    "scripts": {
-        "web": "cd web && yarn dev",
-        "api": "cd api && yarn example-basic",
-        "dev": "concurrently \"npm run web\" \"npm run api\""
-    },
-    "dependencies": {
-        "concurrently": "^8.2.2"
-    }
+  "name": "nfc-card-reader",
+  "version": "0.1.0",
+  "scripts": {
+    "web": "cd frontend && yarn && yarn dev",
+    "api": "cd backend && yarn && yarn example-basic",
+    "start": "yarn && concurrently \"yarn run web\" \"yarn run api\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
