@@ -1,6 +1,6 @@
 "use strict";
 
-import NFC from './NFC';
+import NFC from "./NFC";
 import Reader, {
 	TAG_ISO_14443_3,
 	TAG_ISO_14443_4,
@@ -8,8 +8,8 @@ import Reader, {
 	KEY_TYPE_B,
 	CONNECT_MODE_CARD,
 	CONNECT_MODE_DIRECT,
-} from './Reader';
-import ACR122Reader from './ACR122Reader';
+} from "./Reader";
+import ACR122Reader from "./ACR122Reader";
 import {
 	UNKNOWN_ERROR,
 	FAILURE,
@@ -25,7 +25,7 @@ import {
 	ConnectError,
 	DisconnectError,
 	GetUIDError,
-} from './errors';
+} from "./errors";
 
 export {
 	NFC,

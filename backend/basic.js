@@ -14,7 +14,7 @@ const io = new Server(server);
 app.use(
 	cors({
 		origin: "*", // Replace with your frontend URL if different
-	})
+	}),
 );
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,7 +33,6 @@ nfc.on("reader", (reader) => {
 	});
 
 	reader.on("end", () => {
-		consol;
 		e.log(`${reader.reader.name}  device removed`);
 	});
 });

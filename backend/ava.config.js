@@ -11,15 +11,11 @@ module.exports = {
 	extensions: {
 		// https://github.com/avajs/ava/blob/main/docs/06-configuration.md#configuring-module-formats
 		js: true,
-		ts: 'commonjs',
+		ts: "commonjs",
 	},
 	// extensions: ['.js', '.ts'],
-	require: [
-		'@babel/register',
-	],
-	files: [
-		'./test/**/*',
-	],
+	require: ["@babel/register"],
+	files: ["./test/**/*"],
 	ignoredByWatcher: [
 		//
 		// some files and directories are ignored by default,
@@ -38,8 +34,8 @@ module.exports = {
 		//   or
 		//   DEBUG=ava:* npx ava --watch
 		//
-		'./.idea/',
-		'./temp/',
-		'./dist/',
+		"./.idea/",
+		"./temp/",
+		"./dist/",
 	],
 };

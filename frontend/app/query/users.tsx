@@ -11,4 +11,4 @@ export const users = [
     uid: "493bd159",
     amount: 75.75,
   },
-];
+]

@@ -1,6 +1,6 @@
 "use strict";
 
-import Reader from './Reader';
+import Reader from "./Reader";
 import {
 	ConnectError,
 	DisconnectError,
@@ -15,17 +15,14 @@ import {
 	OPERATION_FAILED,
 	UNKNOWN_ERROR,
 	FAILURE,
-} from './errors';
-
+} from "./errors";
 
 class ACR122Reader extends Reader {
-
 	async inAutoPoll() {
-
 		const payload = [
-			0xD4,
+			0xd4,
 			0x60,
-			0xFF, // PollNr (0xFF = Endless polling)
+			0xff, // PollNr (0xFF = Endless polling)
 			0x01, // Period (0x01 – 0x0F) indicates the polling period in units of 150 ms
 			0x00, // Type 1 0x00 = Generic passive 106 kbps (ISO/IEC14443-4A, Mifare and DEP)
 		];
@@ -45,10 +42,9 @@ class ACR122Reader extends Reader {
 		let response = null;
 
 		try {
-
 			response = await this.control(packet, 2);
 
-			this.logger.debug('response received', response);
+			this.logger.debug("response received", response);
 
 			// Red OFF Green OFF  0x00
 			// Red ON  Green OFF  0x01
@@ -56,12 +52,8 @@ class ACR122Reader extends Reader {
 			// Red ON  Green ON   0x03
 
 			console.log(response.slice(1));
-
-
 		} catch (err) {
-
 			throw err;
-
 		}
 
 		// const statusCode = response.readUInt16BE(0);
@@ -69,11 +61,9 @@ class ACR122Reader extends Reader {
 		// if (statusCode !== 0x9000) {
 		// 	//throw new LoadAuthenticationKeyError(OPERATION_FAILED, `Load authentication key operation failed: Status code: ${statusCode}`);
 		// }
-
 	}
 
 	async led(led, blinking) {
-
 		// P2: LED State Control (1 byte = 8 bits)
 		// format:
 		/*
@@ -111,7 +101,6 @@ class ACR122Reader extends Reader {
 		// 	0x00
 		// ];
 
-
 		// CMD: Bi-Color LED and Buzzer Control
 		const packet = Buffer.from([
 			0xff, // Class
@@ -127,10 +116,9 @@ class ACR122Reader extends Reader {
 		let response = null;
 
 		try {
-
 			response = await this.control(packet, 2);
 
-			this.logger.debug('response received', response);
+			this.logger.debug("response received", response);
 
 			// Red OFF Green OFF  0x00
 			// Red ON  Green OFF  0x01
@@ -138,12 +126,8 @@ class ACR122Reader extends Reader {
 			// Red ON  Green ON   0x03
 
 			console.log(response.slice(1));
-
-
 		} catch (err) {
-
 			throw err;
-
 		}
 
 		// const statusCode = response.readUInt16BE(0);
@@ -151,12 +135,9 @@ class ACR122Reader extends Reader {
 		// if (statusCode !== 0x9000) {
 		// 	//throw new LoadAuthenticationKeyError(OPERATION_FAILED, `Load authentication key operation failed: Status code: ${statusCode}`);
 		// }
-
 	}
 
 	async setBuzzerOutput(enabled = true) {
-
-
 		// CMD: Set Buzzer Output Enable for Card Detection
 		const packet = Buffer.from([
 			0xff, // Class
@@ -171,16 +152,11 @@ class ACR122Reader extends Reader {
 		let response = null;
 
 		try {
-
 			response = await this.control(packet, 2);
 
-			this.logger.debug('response received', response);
-
-
+			this.logger.debug("response received", response);
 		} catch (err) {
-
 			throw err;
-
 		}
 
 		const statusCode = response.readUInt16BE(0);
@@ -188,11 +164,9 @@ class ACR122Reader extends Reader {
 		if (statusCode !== 0x9000) {
 			//throw new LoadAuthenticationKeyError(OPERATION_FAILED, `Load authentication key operation failed: Status code: ${statusCode}`);
 		}
-
 	}
 
 	async setPICC(picc) {
-
 		// just enable Auto ATS Generation
 		// const picc = 0b01000000;
 
@@ -210,16 +184,11 @@ class ACR122Reader extends Reader {
 		let response = null;
 
 		try {
-
 			response = await this.control(packet, 1);
 
-			this.logger.debug('response received', response);
-
-
+			this.logger.debug("response received", response);
 		} catch (err) {
-
 			throw err;
-
 		}
 
 		// const statusCode = response.readUInt16BE(0);
@@ -227,9 +196,7 @@ class ACR122Reader extends Reader {
 		// if (statusCode !== 0x9000) {
 		// 	//throw new LoadAuthenticationKeyError(OPERATION_FAILED, `Load authentication key operation failed: Status code: ${statusCode}`);
 		// }
-
 	}
-
 }
 
 export default ACR122Reader;
